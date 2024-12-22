@@ -1,0 +1,14 @@
+model:
+  name: "EleutherAI/gpt-neo-125M"
+  batch_size: 4
+  epochs: 3
+  learning_rate: 2e-5
+  max_length: 200
+  temperature: 0.7
+
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  analyzed: "data/analyzed"
+  models: "models"
+  logs: "logs"

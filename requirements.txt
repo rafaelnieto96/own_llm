@@ -1,0 +1,31 @@
+# Transformers y PyTorch
+torch
+transformers
+accelerate
+
+# Procesamiento de documentos
+langchain
+langchain-community
+pypdf
+PyPDF2
+spacy
+es-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.7.0/es_core_news_sm-3.7.0.tar.gz
+
+# Utilidades
+tqdm
+pyyaml
+numpy
+regex
+
+# Logging y métricas
+tensorboard
+wandb
+
+# Gestión de archivos y sistema
+python-dotenv
+pathlib
+
+# Testing y desarrollo
+pytest
+black
+flake8
