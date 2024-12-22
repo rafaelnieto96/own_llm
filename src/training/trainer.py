@@ -4,19 +4,12 @@ from transformers import DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
 import torch
 from pathlib import Path
-import logging
 import json
 from tqdm import tqdm
 
 class LegalTrainer:
-    def __init__(self, model_name: str = "EleutherAI/gpt-neo-125M"):
-        # Configurar logging
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            filename='logs/training.log'
-        )
-        self.logger = logging.getLogger(__name__)
+    def __init__(self, model_name: str = "EleutherAI/gpt-neo-125M", logger=None):
+        self.logger = logger
         
         # Configurar dispositivo
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

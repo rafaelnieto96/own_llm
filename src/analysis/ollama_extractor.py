@@ -1,13 +1,13 @@
-from langchain_community.llms import Ollama
+# src/analysis/ollama_extractor.py
+from langchain_ollama import OllamaLLM
 import json
 from pathlib import Path
-from typing import Dict, List
-import logging
+from typing import Dict
 
 class OllamaExtractor:
-    def __init__(self, model_name: str = "mistral"):
-        self.llm = Ollama(model=model_name)
-        self.logger = logging.getLogger(__name__)
+    def __init__(self, model_name: str = "mistral", logger=None):
+        self.llm = OllamaLLM(model=model_name)
+        self.logger = logger
 
     def extract_information(self, text: str) -> Dict:
         """Extrae información estructurada usando Ollama"""

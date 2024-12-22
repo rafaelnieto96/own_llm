@@ -1,21 +1,16 @@
 # src/preprocessing/processor.py
 from langchain_community.document_loaders import PyPDFLoader
-from pathlib import Path
+import spacy
 import re
+from pathlib import Path
 from typing import Dict, List
 import json
-import logging
 from tqdm import tqdm
 
 class DocumentProcessor:
-    def __init__(self):
-        # Configurar logging básico
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            filename='logs/preprocessing.log'
-        )
-        self.logger = logging.getLogger(__name__)
+    def __init__(self, logger=None):
+        self.logger = logger
+        self.nlp = spacy.load("es_core_news_sm")
 
     def clean_text(self, text: str) -> str:
         """Limpieza básica del texto"""

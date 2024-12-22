@@ -19,10 +19,16 @@ class LegalLLMApp:
             log_dir=Path(self.config['paths']['logs'])
         )
         
-        # Inicializar componentes
-        self.processor = DocumentProcessor()
-        self.trainer = LegalTrainer(self.config['model']['name'])
-        self.extractor = OllamaExtractor()
+        # Inicializar componentes pasando el logger
+        self.processor = DocumentProcessor(logger=self.logger.logger)
+        self.trainer = LegalTrainer(
+            model_name=self.config['model']['name'],
+            logger=self.logger.logger
+        )
+        self.extractor = OllamaExtractor(
+            model_name="mistral",
+            logger=self.logger.logger
+        )
         
         # Verificar y crear directorios necesarios
         self._setup_directories()
