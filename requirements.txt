@@ -17,6 +17,7 @@ tqdm
 pyyaml
 numpy
 regex
+requests
 
 # Logging y métricas
 tensorboard
