@@ -18,7 +18,21 @@ class LegalTrainer:
         # Cargar modelo y tokenizer
         self.logger.info(f"Cargando modelo {model_name}")
         self.model = GPTNeoForCausalLM.from_pretrained(model_name)
-        self.tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+        self.tokenizer = GPT2Tokenizer.from_pretrained(
+            model_name,
+            mean_resizing=False
+        )
+        
+        # Asegurar que el tokenizer tenga tokens especiales
+        special_tokens = {
+            'additional_special_tokens': ['<|inicio_documento|>', '<|fin_documento|>']
+        }
+        self.tokenizer.add_special_tokens(special_tokens)
+        # Modificar esta línea
+        self.model.resize_token_embeddings(len(self.tokenizer), mean_resizing=False)
+        
+        # Mover modelo al dispositivo
+        self.model.to(self.device)
         
         # Asegurar que el tokenizer tenga tokens especiales
         special_tokens = {

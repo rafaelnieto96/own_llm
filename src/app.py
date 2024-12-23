@@ -146,13 +146,15 @@ def main():
         
         args = parser.parse_args()
         
-        # Verificar GPU
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"Usando dispositivo: {device}")
-        
         # Inicializar aplicación
         app = LegalLLMApp()
+        logger = app.logger.logger
         
+        # Log del dispositivo una sola vez
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        logger.info(f"Usando dispositivo: {device}")
+        
+        # Ejecutar modo seleccionado
         if args.mode == 'preprocess':
             print("Ejecutando solo preprocesamiento...")
             app.process_documents()
