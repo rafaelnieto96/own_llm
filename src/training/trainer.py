@@ -5,7 +5,9 @@ from transformers import Trainer, TrainingArguments
 import torch
 from pathlib import Path
 import json
-from tqdm import tqdm
+import os
+
+os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
 
 class LegalTrainer:
     def __init__(self, model_name: str = "EleutherAI/gpt-neo-125M", logger=None):

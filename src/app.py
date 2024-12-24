@@ -7,6 +7,9 @@ from preprocessing.processor import DocumentProcessor
 from training.trainer import LegalTrainer
 from utils.logger import LegalLogger
 from analysis.ollama_extractor import OllamaExtractor
+import os
+
+os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
 
 class LegalLLMApp:
     def __init__(self, config_path: str = "config.yaml"):
