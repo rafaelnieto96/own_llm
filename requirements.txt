@@ -18,6 +18,7 @@ pyyaml
 numpy
 regex
 requests
+tiktoken
 
 # Logging y métricas
 tensorboard
